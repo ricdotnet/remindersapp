@@ -65,11 +65,25 @@ export default {
 				return;
 			}
 
+			/**
+			 * Remove duplicate code
+			 * create date variables / date methods in actions or store.
+			 */
+			if(new Date(this.reminder.date).getTime() <= new Date().getTime()) {
+				alert('cannot set a reminder to the past.')
+				return;
+			}
+
 			const tempReminder = {
 				content: this.reminder.content,
 				date: new Date(this.reminder.date).getTime()
 			};
 			this.$emit('add-reminder', tempReminder)
+			this.reminder = {
+				content: '',
+				date: ''
+			};
+			this.selectButton = 'Select Date'
 		}
 
 	}

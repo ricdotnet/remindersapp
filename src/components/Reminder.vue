@@ -4,7 +4,12 @@
 			{{ reminder.content }} <br/>
 <!--			{{ this.reminder.date }} date<br />-->
 <!--			{{ this.difference }} difference<br/>-->
-			{{ this.days }} days, {{ this.hours }} hours, {{ this.minutes }} minutes, {{ this.seconds }} seconds
+			<div v-show="this.days > 0">
+				{{ this.days }} days, {{ this.hours }} hours, {{ this.minutes }} minutes, {{ this.seconds }} seconds
+			</div>
+			<div v-show="this.days <= 0">
+				Complete.
+			</div>
 		</div>
 	</div>
 </template>

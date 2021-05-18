@@ -73,6 +73,14 @@ export default {
 				return;
 			}
 			this.$emit('date-send', this.date)
+			this.date = {
+				day: '',
+				month: '',
+				year: '',
+				hour: '',
+				minute: '',
+				second: ''
+			}
 		},
 		dayRange() {
 			const select = document.getElementById('day');

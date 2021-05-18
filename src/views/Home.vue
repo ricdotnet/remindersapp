@@ -27,7 +27,22 @@ export default {
 	methods: {
 
 		addReminder(reminder) {
-			this.reminders = [...this.reminders, reminder]
+
+			// if(!reminders.getItem('reminders')) {
+			// 	reminders.setItem('reminders', JSON.stringify(reminder));
+			// 	this.updateArray(reminder)
+			// } else {
+			// 	reminders.removeItem('reminders');
+			// 	this.updateArray(reminder)
+			// 	reminders.setItem('reminders', JSON.stringify(this.reminders))
+			// }
+
+			this.updateArray(reminder)
+
+
+		},
+		updateArray(newReminder) {
+			this.reminders = [...this.reminders, newReminder]
 		}
 	}
 }
