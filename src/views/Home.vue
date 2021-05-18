@@ -1,18 +1,41 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div>
+
+		<ReminderForm @add-reminder="addReminder" />
+<!--		<Reminder :reminder-list="this.reminders" />-->
+		<Reminder v-show="reminders.length > 0" v-for="reminder in this.reminders" :reminder="reminder" :key="reminder.key" />
+
+	</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+// import Actions from '../application/Actions'
+import ReminderForm from "../components/ReminderForm";
+import Reminder from "../components/Reminder";
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+	name: 'Home',
+	components: {Reminder, ReminderForm},
+	data() {
+		return {
+			reminders: []
+		}
+	},
+	created() {
+
+		this.reminders = this.$store.reminders
+
+	},
+	methods: {
+
+		addReminder(reminder) {
+			// let reminder = Actions.addReminder();
+			// console.log(reminder)
+			// // this.reminders = [...this.reminders, JSON.stringify(reminder)]
+			// this.$store.reminders.push(reminder)
+			// localStorage.removeItem('reminders')
+			// localStorage.setItem('reminders', JSON.stringify(this.$store.reminders))
+			this.reminders = [...this.reminders, reminder]
+		}
+	}
 }
 </script>

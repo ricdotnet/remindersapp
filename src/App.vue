@@ -1,32 +1,40 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+	<div id="app">
+
+		<SpinnerIcon v-show="this.$store.loading" class="text-black w-10 make-middle" />
+
+		<router-view/>
+
+	</div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import SpinnerIcon from "./components/icons/SpinnerIcon";
 
-#nav {
-  padding: 30px;
-}
+export default {
+	name: 'App',
+	components: {SpinnerIcon},
+	data() {
+		return {
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+		}
+	},
+	created() {
+		this.$store.loading = true;
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+		this.seeder()
+
+		this.$store.loading = false;
+	},
+	methods: {
+
+		seeder() {
+
+			if(localStorage.getItem('reminders'))
+				this.$store.reminders.push(JSON.parse(localStorage.getItem('reminders')))
+
+		}
+
+	}
 }
-</style>
+</script>

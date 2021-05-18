@@ -1,24 +1,11 @@
-# reminders
+### Reminders App
 
-## Project setup
-```
-npm install
-```
+Reminders app built in vueJs.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Practicing `this.$emit` to emit data and actions through components.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+This code is totally free and whoever feels like can copy and use at their own will.
 
-### Lints and fixes files
-```
-npm run lint
-```
+[Ricardo Rocha](https://rrocha.uk)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[VueJs TodoApp](https://todoapp.rrocha.uk)
