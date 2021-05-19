@@ -1,7 +1,7 @@
 <template>
 	<div>
 
-		<form @submit.prevent="" class="sm:w-3/4 md:w-2/4 lg:2-1/4 mx-auto mt-10 flex flex-col">
+		<form @submit.prevent="" class="w-3/4 md:w-2/4 lg:w-1/3 mx-auto mt-10 flex flex-col">
 			<div>
 				<label>
 					<input v-model="reminder.content" type="text" class="px-5 py-2 w-full focus:outline-none mb-2">
