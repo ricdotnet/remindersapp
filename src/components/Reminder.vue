@@ -1,13 +1,13 @@
 <template>
 	<div>
-		<div class="w-3/4 md:w-2/4 lg:w-1/3 mx-auto p-2 rounded-sm shadow" :class="{ 'bg-indigo-300':this.days > 0, 'bg-green-500':this.days < 0}">
+		<div class="w-3/4 md:w-2/4 lg:w-1/3 mx-auto p-2 rounded-sm shadow" :class="{ 'bg-indigo-300':reminder.date > this.dateNow, 'bg-green-500':reminder.date < this.dateNow}">
 			{{ reminder.content }} <br/>
 <!--			{{ this.reminder.date }} date<br />-->
 <!--			{{ this.difference }} difference<br/>-->
-			<div v-show="this.days > 0">
+			<div v-if="reminder.date > this.dateNow">
 				{{ this.days }} days, {{ this.hours }} hours, {{ this.minutes }} minutes, {{ this.seconds }} seconds
 			</div>
-			<div v-show="this.days <= 0">
+			<div v-else>
 				Complete.
 			</div>
 		</div>
@@ -15,7 +15,6 @@
 </template>
 
 <script>
-const dateNow = new Date().getTime()
 export default {
 	name: "Reminder",
 	props: {
@@ -27,7 +26,8 @@ export default {
 			hours: 0,
 			minutes: 0,
 			seconds: 0,
-			difference: 0
+			difference: 0,
+			dateNow: 0,
 		}
 	},
 	watch: {
@@ -54,7 +54,9 @@ export default {
 
 		},
 		setDifference() {
-			this.difference = (this.reminder.date - dateNow) / 1000
+			this.dateNow = new Date().getTime()
+			this.difference = (this.reminder.date - this.dateNow) / 1000
+			console.log(this.dateNow)
 		}
 	}
 }

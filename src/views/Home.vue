@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="mb-20">
 
 		<ReminderForm @add-reminder="addReminder" class="mb-10" />
 <!--		<Reminder :reminder-list="this.reminders" />-->
@@ -40,7 +40,7 @@ export default {
 
 		},
 		updateArray(newReminder) {
-			this.reminders = [newReminder, ...this.reminders]
+			this.reminders = [...this.reminders, newReminder]
 		}
 	}
 }
