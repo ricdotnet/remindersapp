@@ -28,21 +28,19 @@ export default {
 
 		addReminder(reminder) {
 
-			// if(!reminders.getItem('reminders')) {
-			// 	reminders.setItem('reminders', JSON.stringify(reminder));
-			// 	this.updateArray(reminder)
-			// } else {
-			// 	reminders.removeItem('reminders');
-			// 	this.updateArray(reminder)
-			// 	reminders.setItem('reminders', JSON.stringify(this.reminders))
-			// }
-
-			this.updateArray(reminder)
+			if(!localStorage.getItem('reminders')) {
+				localStorage.setItem('reminders', JSON.stringify(reminder))
+				this.updateArray(reminder)
+			} else {
+				localStorage.removeItem('reminders')
+				this.updateArray(reminder)
+				localStorage.setItem('reminders', JSON.stringify(this.reminders))
+			}
 
 
 		},
 		updateArray(newReminder) {
-			this.reminders = [...this.reminders, newReminder]
+			this.reminders = [newReminder, ...this.reminders]
 		}
 	}
 }

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="w-1/3 mx-auto p-2 bg-indigo-300 rounded-sm shadow">
+		<div class="w-3/4 md:w-2/4 lg:w-1/3 mx-auto p-2 bg-indigo-300 rounded-sm shadow">
 			{{ reminder.content }} <br/>
 <!--			{{ this.reminder.date }} date<br />-->
 <!--			{{ this.difference }} difference<br/>-->
