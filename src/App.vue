@@ -30,6 +30,8 @@ export default {
 
 		seeder() {
 
+			this.$store.reminders = []
+
 			if(localStorage.getItem('reminders')) {
 				this.$store.reminders = JSON.parse(localStorage.getItem('reminders'))
 			}

@@ -1,17 +1,15 @@
 <template>
-	<div @click="removeReminder">
-		<div class="w-3/4 md:w-2/4 lg:w-1/3 mx-auto p-2 rounded-sm shadow" :class="{ 'bg-indigo-300':reminder.date > this.dateNow, 'bg-green-500':reminder.date < this.dateNow}">
+	<div>
+		<div class="w-3/4 md:w-2/4 lg:w-1/3 mx-auto p-2 rounded-sm shadow" :class="{ 'bg-indigo-300':difference > 0, 'bg-green-500':difference < 0}">
 			{{ reminder.content }} <br/>
-			<div v-if="reminder.date > this.dateNow">
+			<div v-if="this.difference > 0">
 				{{ this.days }} days, {{ this.hours }} hours, {{ this.minutes }} minutes, {{ this.seconds }} seconds
 			</div>
 			<div v-else>
 				Complete.
 			</div>
 
-<!--			<div class="relative">-->
-<!--				<button @click="removeReminder" class="absolute top-0 right-0">del</button>-->
-<!--			</div>-->
+			<button @click="removeReminder" class="focus:outline-none">remove</button>
 		</div>
 	</div>
 </template>
