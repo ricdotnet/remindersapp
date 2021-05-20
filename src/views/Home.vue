@@ -2,8 +2,7 @@
 	<div class="mb-20">
 
 		<ReminderForm @add-reminder="addReminder" class="mb-10" />
-<!--		<Reminder :reminder-list="this.reminders" />-->
-		<Reminder class="mb-2" v-show="reminders.length > 0" v-for="reminder in this.reminders" :reminder="reminder" :key="reminder.key" />
+		<Reminder @remove-reminder="removeReminder" v-show="remindersLength > 0" class="mb-2" v-for="reminder in this.$store.reminders" :reminder="reminder" :key="reminder.key" />
 
 	</div>
 </template>
@@ -16,12 +15,12 @@ export default {
 	components: {Reminder, ReminderForm},
 	data() {
 		return {
-			reminders: []
+			remindersLength: this.$store.reminders.length
 		}
 	},
 	created() {
 
-		this.reminders = this.$store.reminders
+		// this.$store.reminders
 
 	},
 	methods: {
@@ -34,13 +33,20 @@ export default {
 			} else {
 				localStorage.removeItem('reminders')
 				this.updateArray(reminder)
-				localStorage.setItem('reminders', JSON.stringify(this.reminders))
+				localStorage.setItem('reminders', JSON.stringify(this.$store.reminders))
 			}
 
 
 		},
 		updateArray(newReminder) {
-			this.reminders = [...this.reminders, newReminder]
+			this.$store.reminders = [...this.$store.reminders, newReminder]
+		},
+		removeReminder(value) {
+			localStorage.removeItem('reminders')
+
+			this.$store.reminders.splice(value, 1)
+
+			localStorage.setItem('reminders', JSON.stringify(this.$store.reminders))
 		}
 	}
 }

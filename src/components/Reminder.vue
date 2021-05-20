@@ -1,15 +1,17 @@
 <template>
-	<div>
+	<div @click="removeReminder">
 		<div class="w-3/4 md:w-2/4 lg:w-1/3 mx-auto p-2 rounded-sm shadow" :class="{ 'bg-indigo-300':reminder.date > this.dateNow, 'bg-green-500':reminder.date < this.dateNow}">
 			{{ reminder.content }} <br/>
-<!--			{{ this.reminder.date }} date<br />-->
-<!--			{{ this.difference }} difference<br/>-->
 			<div v-if="reminder.date > this.dateNow">
 				{{ this.days }} days, {{ this.hours }} hours, {{ this.minutes }} minutes, {{ this.seconds }} seconds
 			</div>
 			<div v-else>
 				Complete.
 			</div>
+
+<!--			<div class="relative">-->
+<!--				<button @click="removeReminder" class="absolute top-0 right-0">del</button>-->
+<!--			</div>-->
 		</div>
 	</div>
 </template>
@@ -56,7 +58,9 @@ export default {
 		setDifference() {
 			this.dateNow = new Date().getTime()
 			this.difference = (this.reminder.date - this.dateNow) / 1000
-			console.log(this.dateNow)
+		},
+		removeReminder() {
+			this.$emit('remove-reminder', this.$store.reminders.indexOf(this.reminder))
 		}
 	}
 }

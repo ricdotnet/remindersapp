@@ -1,6 +1,6 @@
 <template>
-	<div class="fixed w-full h-full bg-black bg-opacity-30 top-0 left-0">
-		<div class="make-middle max-w-2xl p-5 bg-white rounded flex flex-col" :class="{ 'border border-red-500':invalid }">
+	<div class="fixed w-full h-full bg-black bg-opacity-30 top-0 left-0 z-50">
+		<div class="make-middle max-w-2xl p-5 bg-white rounded flex flex-col" :class="{ 'ring-4 ring-red-800':invalid }">
 
 			<label class="w-full">
 				<select name="day" id="day" v-model="date.day">
