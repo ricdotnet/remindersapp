@@ -9,3 +9,5 @@ This code is totally free and whoever feels like can copy and use at their own w
 [Ricardo Rocha](https://ricr.dev)
 
 [VueJs TodoApp](https://todoapp.ricr.dev)
+
+[VueJs Reminders](https://reminders.ricr.dev)
