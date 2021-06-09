@@ -23,6 +23,7 @@ export default {
 		this.$store.loading = true;
 
 		this.seeder()
+		this.currentTheme()
 
 		this.$store.loading = false;
 	},
@@ -36,6 +37,28 @@ export default {
 				this.$store.reminders = JSON.parse(localStorage.getItem('reminders'))
 			}
 
+		},
+
+		currentTheme() {
+			/*
+		get current theme from localstorage
+		if none is set, light will be set by default
+		 */
+			let currentTheme = localStorage.getItem('light');
+
+			if(currentTheme === null) {
+				document.body.style.background = '#E0E7FF';
+				this.$store.currentTheme = true;
+				return;
+			}
+
+			if(currentTheme === 'true') {
+				document.body.style.backgroundColor = '#E0E7FF';
+				this.$store.currentTheme = currentTheme;
+			} else {
+				document.body.style.backgroundColor = '#312E81';
+				this.$store.currentTheme = currentTheme;
+			}
 		}
 
 	}

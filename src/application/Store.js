@@ -6,6 +6,9 @@ export const Store = Vue.observable({
     loading: false,
 
     //reminders application
-    reminders: []
+    reminders: [],
+
+    //current theme
+    currentTheme: ''
 
 })
